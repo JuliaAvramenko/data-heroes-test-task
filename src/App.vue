@@ -105,17 +105,16 @@ function goToPrevPage() {
 .cards-wrapper {
   display: flex;
   flex-direction: column;
-  padding: 30px 10px;
+  padding: 30px;
   align-items: center;
 }
 
 .cards {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
 }
 
 .title {

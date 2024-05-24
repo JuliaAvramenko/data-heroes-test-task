@@ -36,7 +36,7 @@ function indicateStyle(status) {
 .card {
     display: flex;
     width: 600px;
-    height: 220px;
+    height: 240px;
     background-color: rgb(60, 62, 68);
     border-radius: 10px;
     color: #fff;
