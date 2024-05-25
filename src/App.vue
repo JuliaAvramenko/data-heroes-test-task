@@ -93,13 +93,13 @@ function goToPrevPage() {
 .cards-wrapper {
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 30px 10px;
   align-items: center;
 }
 
 .cards {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
