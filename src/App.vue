@@ -8,7 +8,7 @@ const selectedStatus = ref('')
 const nextPageUrl = ref(null)
 const prevPageUrl = ref(null)
 
-async function getAllCharacters(url) {
+async function getData(url) {
   try {
     const response = await fetch(url)
     const data = await response.json()
@@ -20,29 +20,17 @@ async function getAllCharacters(url) {
   }
 }
 
-async function getFilteredCharacters() {
-  try {
-    const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${name.value}&status=${selectedStatus.value}`)
-    const data = await response.json()
-    info.value = data
-    nextPageUrl.value = data.info.next
-    prevPageUrl.value = data.info.prev
-  } catch (error) {
-    console.error('Ошибка при получении данных:', error)
-  }
-}
-
 function findCharacters() {
-  getFilteredCharacters()
+  getData(`https://rickandmortyapi.com/api/character/?name=${name.value}&status=${selectedStatus.value}`)
 }
 
 onMounted(() => {
-  getAllCharacters('https://rickandmortyapi.com/api/character/')
+  getData('https://rickandmortyapi.com/api/character/')
 })
 
 function goToNextPage() {
   if (nextPageUrl.value) {
-    getAllCharacters(nextPageUrl.value)
+    getData(nextPageUrl.value)
   }
   if (nextPageUrl.value === null) {
     return
@@ -51,7 +39,7 @@ function goToNextPage() {
 
 function goToPrevPage() {
   if (prevPageUrl.value) {
-    getAllCharacters(prevPageUrl.value)
+    getData(prevPageUrl.value)
   }
 }
 
@@ -70,7 +58,7 @@ function goToPrevPage() {
           <option value="unknown">Unknown</option>
         </select>
         <input type="text" class="input" v-model:="name" placeholder="Insert name">
-        <button class="button" @click="findCharacters()">Apply</button>
+        <button class="button" @click="findCharacters">Apply</button>
       </div>
     </div>
 
